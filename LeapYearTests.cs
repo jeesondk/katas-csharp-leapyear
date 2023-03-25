@@ -29,12 +29,18 @@ public class LeapYearTests
             .Be(expectedResult);
     }
 
-    [Fact]
-    public void IsYearDivisibleBy100()
+    [Theory]
+    [InlineData(1800, false)]
+    [InlineData(1900, false)]
+    [InlineData(2100, false)]
+    [InlineData(2200, false)]
+    [InlineData(2300, false)]
+    [InlineData(2500, false)]
+    public void IsYearDivisibleBy100(int year, bool expectedResult)
     {
-        _calculator.IsLeapYear(1900)
+        _calculator.IsLeapYear(year)
             .Should()
-            .Be(false);
+            .Be(expectedResult);
     }
     
 }
