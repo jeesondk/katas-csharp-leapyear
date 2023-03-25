@@ -19,11 +19,22 @@ public class LeapYearTests
         _calculator = new Calculator();
     }
     
-    [Fact]
-    public void IsYearDivisibleBy4()
+    [Theory]
+    [InlineData(2020, true)]
+    [InlineData(2021, false)]
+    public void IsYearDivisibleBy4(int year, bool expectedResult)
     {
-        _calculator.IsLeapYear(2020)
+        _calculator.IsLeapYear(year)
             .Should()
-            .Be(true);
+            .Be(expectedResult);
     }
+
+    [Fact]
+    public void IsYearDivisibleBy100()
+    {
+        _calculator.IsLeapYear(1900)
+            .Should()
+            .Be(false);
+    }
+    
 }
