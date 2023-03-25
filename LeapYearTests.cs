@@ -42,5 +42,13 @@ public class LeapYearTests
             .Should()
             .Be(expectedResult);
     }
+
+    [Fact]
+    public void IsYearDivisibleBy400()
+    {
+        _calculator.IsLeapYear(2400)
+            .Should()
+            .Be(true);
+    }
     
 }
